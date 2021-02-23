@@ -1,0 +1,10 @@
+.profile__avatar-edit-icon {
+  width: 26px;
+  height: 26px;
+  background: url('../../../../images/profile-edit-icon.svg');
+  position: absolute;
+  top: 47px;
+  left: 47px;
+  opacity: 0;
+  z-index: 1;
+}

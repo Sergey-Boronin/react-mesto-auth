@@ -1,0 +1,15 @@
+.page-button {
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  border: none;
+  transition: opacity .3s linear;
+}
+
+.page-button:hover {
+  opacity: .6;
+}
+
+.page-button:focus {
+  outline: none;
+}

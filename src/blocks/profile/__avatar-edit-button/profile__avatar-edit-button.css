@@ -1,0 +1,15 @@
+.profile__avatar-edit-button {
+  border-radius: 50%;
+  margin-right: 30px;
+  width: 120px;
+  height: 120px;
+  border: 0;
+  padding: 0;
+  position: relative;
+}
+
+.profile__avatar-edit-button:hover .profile__avatar-edit-icon {
+  opacity: 1;
+
+}
+
