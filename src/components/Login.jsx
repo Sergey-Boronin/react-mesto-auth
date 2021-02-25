@@ -19,7 +19,7 @@ function Login () {
       />
       <button>Зарегистрироваться</button>
     </form>
-    <p>Уже зарегистрированы?</p>
+    <p>Уже зарегистрированы?<a href="https://habr.com/ru/post/273897/">Войти</a></p>
     </>
   )
 }
