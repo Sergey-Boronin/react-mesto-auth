@@ -9,6 +9,8 @@ import ImagePopup from "./ImagePopup";
 import CurrentUserContext from "./../contexts/CurrentUserContext";
 import api from "../utils/api";
 
+// import Login from './Login';
+
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(
     false
@@ -133,6 +135,7 @@ function App() {
         />
         <ImagePopup onClose={closePopups} card={selectedCard} />
       </div>
+      {/* <Login/> */}
     </CurrentUserContext.Provider>
   );
 }
