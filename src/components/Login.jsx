@@ -1,27 +1,21 @@
-import React from 'react'
+import React from "react";
+import { Link } from 'react-router-dom';
 
-function Login () {
+function Login() {
   return (
-    <>
-    <form
-      className="auth-form"
-    >
-      <h2
-        className="auth-form__title"
-      >Регистрация</h2>
-      <input
-        placeholder="Email"
-        required
-      />
-      <input
-        placeholder="Пароль"
-        required
-      />
-      <button>Зарегистрироваться</button>
-    </form>
-    <p>Уже зарегистрированы?<a href="https://habr.com/ru/post/273897/">Войти</a></p>
-    </>
-  )
+    <div className="login">
+      <h2 className="login__title">Вход</h2>
+      <form className="login__form">
+        <input id="email" name='email' placeholder="Email" required />
+        <input id='password' name='password' placeholder="Пароль" required />
+        <button type='submit' className="login_link">Войти</button>
+      </form>
+      <div className="login__signup">
+          <p>Ещё не зарегистрированы?</p>
+          <Link to="/register" className="signup__link">Зарегистрироваться</Link>
+        </div>
+    </div>
+  );
 }
 
-export default Login
+export default Login;

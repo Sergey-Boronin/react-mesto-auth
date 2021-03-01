@@ -3,7 +3,7 @@ import editButtonImg from "../images/edit-button-image.svg";
 import addButtonImg from "../images/add-button-image.svg";
 import Card from "./Card";
 import CurrentUserContext from "../contexts/CurrentUserContext";
-import Login from "./Login";
+// import Login from "./Login";
 
 function Main({
   onEditAvatar,
@@ -70,7 +70,7 @@ function Main({
           />
         ))}
       </section>
-      <Login/>
+      {/* <Login/> */}
     </main>
   );
 }

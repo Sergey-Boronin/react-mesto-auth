@@ -8,8 +8,9 @@ import EditAvatarPopup from "./EditAvatarPopup";
 import ImagePopup from "./ImagePopup";
 import CurrentUserContext from "./../contexts/CurrentUserContext";
 import api from "../utils/api";
+import { Route, Switch, Redirect } from 'react-router-dom';
 
-// import Login from './Login';
+import Login from './Login';
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(
@@ -135,7 +136,7 @@ function App() {
         />
         <ImagePopup onClose={closePopups} card={selectedCard} />
       </div>
-      {/* <Login/> */}
+      <Login/>
     </CurrentUserContext.Provider>
   );
 }
