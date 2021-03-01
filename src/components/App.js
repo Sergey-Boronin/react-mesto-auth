@@ -8,9 +8,10 @@ import EditAvatarPopup from "./EditAvatarPopup";
 import ImagePopup from "./ImagePopup";
 import CurrentUserContext from "./../contexts/CurrentUserContext";
 import api from "../utils/api";
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from "react-router-dom";
 
-import Login from './Login';
+import Login from "./Login";
+import Register from "./Register";
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(
@@ -43,45 +44,53 @@ function App() {
   };
 
   function handleUpdateUser(data) {
-    api.updateUserData(data).then((result) => {
-      setCurrentUser(result);
-      closePopups();
-    })
-    .catch((err) => {
-      console.log(`Ошибка обновления данных ${err}`);
-    })
+    api
+      .updateUserData(data)
+      .then((result) => {
+        setCurrentUser(result);
+        closePopups();
+      })
+      .catch((err) => {
+        console.log(`Ошибка обновления данных ${err}`);
+      });
   }
 
   function handleUpdateAvatar(data) {
-    api.updateUserAvatar(data).then((data) => {
-      setCurrentUser(data);
-      closePopups();
-    })
-    .catch((err) => {
-      console.log(`Ошибка обновления аватара ${err}`);
-    })
+    api
+      .updateUserAvatar(data)
+      .then((data) => {
+        setCurrentUser(data);
+        closePopups();
+      })
+      .catch((err) => {
+        console.log(`Ошибка обновления аватара ${err}`);
+      });
   }
 
   function handleAddPlaceSubmit(data) {
-    api.addNewCard(data).then((result) => {
-      const newCard = result;
-      setCards([newCard, ...cards]);
-      closePopups();
-    })
-    .catch((err) => {
-      console.log(`Ошибка добавления карточки ${err}`);
-    })
+    api
+      .addNewCard(data)
+      .then((result) => {
+        const newCard = result;
+        setCards([newCard, ...cards]);
+        closePopups();
+      })
+      .catch((err) => {
+        console.log(`Ошибка добавления карточки ${err}`);
+      });
   }
 
   function handleCardLike(card) {
     const isLiked = card.likes.some((i) => i._id === currentUser._id);
-    api.changeLikeStatus(card._id, !isLiked).then((newCard) => {
-      const newCards = cards.map((c) => (c._id === card._id ? newCard : c));
-      setCards(newCards);
-    })
-    .catch((err) => {
-      console.log(`Ошибка установки лайка ${err}`);
-    })
+    api
+      .changeLikeStatus(card._id, !isLiked)
+      .then((newCard) => {
+        const newCards = cards.map((c) => (c._id === card._id ? newCard : c));
+        setCards(newCards);
+      })
+      .catch((err) => {
+        console.log(`Ошибка установки лайка ${err}`);
+      });
   }
 
   function handleCardDelete(card) {
@@ -93,7 +102,7 @@ function App() {
       })
       .catch((err) => {
         console.log(`Ошибка удаления карточки ${err}`);
-      })
+      });
   }
 
   React.useEffect(() => {
@@ -108,35 +117,49 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
+
+      {/* <Route path='/header'> */}
         <Header />
-        <Main
-          onEditProfile={handleEditProfileClick}
-          onEditAvatar={handleEditAvatarClick}
-          onAddPlace={handleAddPlaceClick}
-          onCardClick={handleCardClick}
-          onCardLike={handleCardLike}
-          onCardDelete={handleCardDelete}
-          cards={cards}
-        />
-        <Footer />
-        <EditProfilePopup
-          isOpen={isEditProfilePopupOpen}
-          onClose={closePopups}
-          onUpdateUser={handleUpdateUser}
-        />
-        <AddPlacePopup
-          isOpen={isAddPlacePopupOpen}
-          onClose={closePopups}
-          onAddPlace={handleAddPlaceSubmit}
-        />
-        <EditAvatarPopup
-          isOpen={isEditAvatarPopupOpen}
-          onClose={closePopups}
-          onUpdateAvatar={handleUpdateAvatar}
-        />
-        <ImagePopup onClose={closePopups} card={selectedCard} />
+        {/* </Route> */}
+        <Switch>
+          <Route exact path="/">
+            <Main
+              onEditProfile={handleEditProfileClick}
+              onEditAvatar={handleEditAvatarClick}
+              onAddPlace={handleAddPlaceClick}
+              onCardClick={handleCardClick}
+              onCardLike={handleCardLike}
+              onCardDelete={handleCardDelete}
+              cards={cards}
+            />
+
+          <Footer />
+          <EditProfilePopup
+            isOpen={isEditProfilePopupOpen}
+            onClose={closePopups}
+            onUpdateUser={handleUpdateUser}
+          />
+          <AddPlacePopup
+            isOpen={isAddPlacePopupOpen}
+            onClose={closePopups}
+            onAddPlace={handleAddPlaceSubmit}
+          />
+          <EditAvatarPopup
+            isOpen={isEditAvatarPopupOpen}
+            onClose={closePopups}
+            onUpdateAvatar={handleUpdateAvatar}
+          />
+          <ImagePopup onClose={closePopups} card={selectedCard} />
+          </Route>
+
+          <Route path="/sign-up">
+            <Register />
+          </Route>
+          <Route path="/sign-in">
+            <Login />
+          </Route>
+</Switch>
       </div>
-      <Login/>
     </CurrentUserContext.Provider>
   );
 }
