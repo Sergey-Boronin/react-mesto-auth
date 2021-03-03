@@ -34,6 +34,7 @@
 @import url("./blocks/footer/__text/footer__text.css");
 @import url("./blocks/popup/popup.css");
 @import url("./blocks/popup/__container/popup__container.css");
+@import url("./blocks/popup/__container/_place/popup__container_place_tooltip.css");
 @import url("./blocks/popup/__close/popup__close.css");
 @import url("./blocks/auth/__tagline/auth__tagline.css");
 @import url("./blocks/auth/__link/auth__link.css");
@@ -58,6 +59,9 @@
 @import url('./blocks/register/__input/register__input.css');
 @import url('./blocks/register/__link/register__link.css');
 @import url('./blocks/register/__signin/register__signin.css');
+@import url('./blocks/tooltip/tooltip.css');
+@import url('./blocks/tooltip/__icon/tooltip__icon.css');
+@import url('./blocks/tooltip/__text/tooltip__text.css');
 
 
 

@@ -12,6 +12,7 @@ import { Route, Switch } from "react-router-dom";
 
 import Login from "./Login";
 import Register from "./Register";
+import InfoTooltip from "./InfoTooltip"
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(
@@ -29,6 +30,9 @@ function App() {
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
   const handleAddPlaceClick = () =>
     setIsAddPlacePopupOpen(!isAddPlacePopupOpen);
+
+  // const [isInfoTooltipPopupOpen, setInfoTooltipPopupOpen] = useState(false);
+
 
   const [selectedCard, setSelectedCard] = React.useState(undefined);
   const handleCardClick = (card) => setSelectedCard(card);
@@ -117,8 +121,7 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
-
-      {/* <Route path='/header'> */}
+        {/* <Route path='/header'> */}
         <Header />
         {/* </Route> */}
         <Switch>
@@ -133,23 +136,22 @@ function App() {
               cards={cards}
             />
 
-
-          <EditProfilePopup
-            isOpen={isEditProfilePopupOpen}
-            onClose={closePopups}
-            onUpdateUser={handleUpdateUser}
-          />
-          <AddPlacePopup
-            isOpen={isAddPlacePopupOpen}
-            onClose={closePopups}
-            onAddPlace={handleAddPlaceSubmit}
-          />
-          <EditAvatarPopup
-            isOpen={isEditAvatarPopupOpen}
-            onClose={closePopups}
-            onUpdateAvatar={handleUpdateAvatar}
-          />
-          <ImagePopup onClose={closePopups} card={selectedCard} />
+            <EditProfilePopup
+              isOpen={isEditProfilePopupOpen}
+              onClose={closePopups}
+              onUpdateUser={handleUpdateUser}
+            />
+            <AddPlacePopup
+              isOpen={isAddPlacePopupOpen}
+              onClose={closePopups}
+              onAddPlace={handleAddPlaceSubmit}
+            />
+            <EditAvatarPopup
+              isOpen={isEditAvatarPopupOpen}
+              onClose={closePopups}
+              onUpdateAvatar={handleUpdateAvatar}
+            />
+            <ImagePopup onClose={closePopups} card={selectedCard} />
           </Route>
 
           <Route path="/sign-up">
@@ -158,8 +160,13 @@ function App() {
           <Route path="/sign-in">
             <Login />
           </Route>
-</Switch>
-<Footer />
+        </Switch>
+        <Footer />
+        <InfoTooltip
+          isOpen={true}
+          onClose={closePopups}
+          // success={success}
+        />
       </div>
     </CurrentUserContext.Provider>
   );
