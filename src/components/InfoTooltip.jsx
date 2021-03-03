@@ -6,8 +6,8 @@ import deniedIcon from '../images/auth-denied.png';
 function InfoTooltip(props) {
   return (
     <section
-    // className={`popup popup_tooltip ${props.isOpen ? 'popup_opened' : ''}`}
-    className='popup popup_opened'
+    className={`popup popup_tooltip ${props.isOpen ? 'popup_opened' : ''}`}
+    // className='popup popup_opened'
     >
       <div className="popup__container popup__container_place_tooltip">
         <div className="tooltip">

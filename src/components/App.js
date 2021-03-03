@@ -13,6 +13,7 @@ import { Route, Switch } from "react-router-dom";
 import Login from "./Login";
 import Register from "./Register";
 import InfoTooltip from "./InfoTooltip"
+import ProtectedRoute from './ProtectedRoute';
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(
@@ -125,7 +126,16 @@ function App() {
         <Header />
         {/* </Route> */}
         <Switch>
-          <Route exact path="/">
+
+        <Route path="/sign-up">
+            <Register />
+          </Route>
+          <Route path="/sign-in">
+            <Login />
+          </Route>
+
+          {/* <Route exact path="/">
+
             <Main
               onEditProfile={handleEditProfileClick}
               onEditAvatar={handleEditAvatarClick}
@@ -135,8 +145,23 @@ function App() {
               onCardDelete={handleCardDelete}
               cards={cards}
             />
+          </Route> */}
 
-            <EditProfilePopup
+
+          <ProtectedRoute
+          loggedIn={true}
+          path="/cards"
+          component={Main}
+          onEditProfile={handleEditProfileClick}
+          onEditAvatar={handleEditAvatarClick}
+          onAddPlace={handleAddPlaceClick}
+          onCardClick={handleCardClick}
+          onCardLike={handleCardLike}
+          onCardDelete={handleCardDelete}
+          cards={cards}>
+          </ProtectedRoute>
+        </Switch>
+        <EditProfilePopup
               isOpen={isEditProfilePopupOpen}
               onClose={closePopups}
               onUpdateUser={handleUpdateUser}
@@ -152,21 +177,14 @@ function App() {
               onUpdateAvatar={handleUpdateAvatar}
             />
             <ImagePopup onClose={closePopups} card={selectedCard} />
-          </Route>
 
-          <Route path="/sign-up">
-            <Register />
-          </Route>
-          <Route path="/sign-in">
-            <Login />
-          </Route>
-        </Switch>
-        <Footer />
-        <InfoTooltip
-          isOpen={true}
+            <InfoTooltip
+          isOpen={false}
           onClose={closePopups}
           // success={success}
         />
+        <Footer />
+
       </div>
     </CurrentUserContext.Provider>
   );
