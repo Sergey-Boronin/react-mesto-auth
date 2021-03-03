@@ -133,7 +133,7 @@ function App() {
               cards={cards}
             />
 
-          <Footer />
+
           <EditProfilePopup
             isOpen={isEditProfilePopupOpen}
             onClose={closePopups}
@@ -159,6 +159,7 @@ function App() {
             <Login />
           </Route>
 </Switch>
+<Footer />
       </div>
     </CurrentUserContext.Provider>
   );

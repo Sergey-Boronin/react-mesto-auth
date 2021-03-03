@@ -1,0 +1,7 @@
+.register {
+  max-width: 358px;
+  min-width: 260px;
+  width: calc(100% - (2*461px));
+  margin: 60px auto 66px;
+  text-align: center;
+}

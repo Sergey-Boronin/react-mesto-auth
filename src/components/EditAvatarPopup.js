@@ -23,12 +23,12 @@ function EditAvatarPopup(props) {
       <input
         name="url"
         type="url"
-        className="popup__input popup__input_type_url"
+        className="form__input form__input_type_url"
         required
         placeholder="Введите адрес картинки"
         ref={avatarRef}
       />
-      <span className="popup__input-error" id="url-error" />
+      <span className="form__input-error" id="url-error" />
     </PopupWithForm>
   );
 }

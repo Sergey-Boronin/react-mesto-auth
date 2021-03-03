@@ -13,19 +13,17 @@ function PopupWithForm(props) {
           className="popup__close page-button"
           onClick={props.onClose}
         />
-        <div className="popup__content">
-          <h2 className="popup__title">{props.title}</h2>
-          <form name={`${props.name}-form`} className="popup__form" noValidate>
+          <form name={`${props.name}-form`} className="form" noValidate>
+          <legend className="form__title">{props.title}</legend>
             {props.children}
             <button
               type="submit"
-              className="popup__button page-button"
+              className="form__button page-button"
               onClick={props.onSubmit}
             >
               {props.buttonName}
             </button>{" "}
           </form>
-        </div>
       </div>
     </section>
   );

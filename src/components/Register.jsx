@@ -1,21 +1,14 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import AuthForm from "./AuthForm";
 
 function Register() {
   return (
-    <div className="register">
-      <h2 className="register__title">Регистрация</h2>
-      <form className="register__form">
-        <input id="username" name='username' placeholder="Email" required />
-        <input id='password' name='password' placeholder="Пароль" required />
-        <button type='submit' className="register__link">Зарегистрироваться</button>
-      </form>
-      <div className="register__signin">
-          <p>Уже зарегистрированы?</p>
-          <Link to="login" className="register__login-link">Войти</Link>
-      </div>
+    <div className='auth'>
+      <AuthForm title="Регистрация" buttonName="Зарегистрироваться" />
+      <p className="auth__tagline">Уже зарегистрированы? <Link className="auth__link" to="/sign-in">Войти</Link></p>
     </div>
-  );
+      );
 }
 
 export default Register;

@@ -37,7 +37,7 @@ function AddPlacePopup(props) {
           name="place"
           placeholder="Название"
           type="text"
-          className="popup__input popup__input_type_place"
+          className="form__input form__input_type_place"
           minLength={2}
           maxLength={30}
           autoComplete="off"
@@ -45,19 +45,19 @@ function AddPlacePopup(props) {
           onChange={handleNameChange}
           value={name}
         />
-        <span className="popup__input-error" id="place-input-error" />
+        <span className="form__input-error" id="place-input-error" />
         <input
           name="url"
           placeholder="Ссылка на картинку"
           type="url"
-          className="popup__input popup__input_type_url"
+          className="form__input form__input_type_url"
           autoComplete="off"
           required
           onChange={handleLinkChange}
           value={link}
 
         />
-        <span className="popup__input-error" id="url-input-error" />
+        <span className="form__input-error" id="url-input-error" />
       </div>
     </PopupWithForm>
   );
