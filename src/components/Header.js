@@ -1,7 +1,14 @@
 import logo from "../images/logo.svg";
 import { Route, Switch, Link } from 'react-router-dom';
 
-function Header() {
+function Header({email, isLogged, onLogout}) {
+
+  const handleLogoutClick = function() {
+    // setMenuOpened(false);
+    onLogout();
+  }
+
+
   return (
     <header className="header">
       <img src={logo} alt="Логотип." className="header__image" />
@@ -22,9 +29,28 @@ function Header() {
               <Link className="header__link" to="sign-up">Регистрация</Link>
               {/* </li> */}
             </Route>
-            {/* {isLogged
-              ? <><li className={menuItem}>{email}</li><li className={menuItem}><span className="menu__link" onClick={handleLogoutClick}>Выйти</span></li></>
-              : ''} */}
+            {isLogged?
+            <>
+            {/* <li
+            className={menuItem}>{email}
+            </li> */}
+            {/* <li  */}
+            {/* className={menuItem}> */}
+            <div
+            className="logged-in">
+            <span
+            className="logged-in__text"
+            >{email}
+            </span>
+            <span
+            className="logged-in__logout"
+            onClick={handleLogoutClick}
+            >Выйти
+            </span>
+            </div>
+            {/* </li> */}
+            </>
+              : ''}
           </Switch>
         {/* </ul> */}
       {/* </nav> */}
