@@ -41,6 +41,7 @@
 @import url("./blocks/popup/__container/popup__container.css");
 @import url("./blocks/popup/__container/_place/popup__container_place_tooltip.css");
 @import url("./blocks/popup/__close/popup__close.css");
+@import url("./blocks/auth/auth.css");
 @import url("./blocks/auth/__tagline/auth__tagline.css");
 @import url("./blocks/auth/__link/auth__link.css");
 @import url("./blocks/form/form.css");

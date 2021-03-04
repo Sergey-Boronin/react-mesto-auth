@@ -1,46 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import AuthForm from "./AuthForm";
 
-function Register({onRegister}) {
-
-  const initialData = {
-    email: '',
-    password: '',
+function Register({ onRegister }) {
+  const dafaultData = {
+    email: "",
+    password: "",
   };
-  const [data, setData] = useState(initialData);
+  const [data, setData] = useState(dafaultData);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setData(data => ({
+  const handleChange = (evt) => {
+    const { name, value } = evt.target;
+    setData((data) => ({
       ...data,
       [name]: value,
     }));
-  }
+  };
 
-  const resetForm = () => {
-    setData(initialData);
-  }
+  const cleanForm = () => {
+    setData(dafaultData);
+  };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
 
-    if (!data.email || !data.password) {
+    if (!data.password || !data.email) {
       return;
     }
 
-    onRegister(data)
-      .then(resetForm);
-  }
+    onRegister(data).then(cleanForm);
+  };
   return (
-    <div className='auth'>
-      {/* <AuthForm title="Регистрация" buttonName="Зарегистрироваться" onRegister={onRegister}/> */}
+    <div className="auth">
       <form
-      className="form form_place_auth"
-      onSubmit={handleSubmit}
-      autoComplete='off'
+        className="form form_place_auth"
+        onSubmit={handleSubmit}
+        autoComplete="off"
       >
-        <legend className="form__title form__title_theme_dark">Регистрация</legend>
+        <legend className="form__title form__title_theme_dark">
+          Регистрация
+        </legend>
         <input
           className="form__input form__input_theme_dark"
           id="email"
@@ -66,12 +64,20 @@ function Register({onRegister}) {
         <button
           type="submit"
           className="form__button page-button form__button_theme_dark"
-        >Зарегистрироваться
+        >
+          Зарегистрироваться
         </button>
+        <div className="auth">
+          <p className="auth__tagline">
+            Уже зарегистрированы?
+            <Link className="auth__link" to="/sign-in">
+              &nbsp;Войти
+            </Link>
+          </p>
+        </div>
       </form>
-      <p className="auth__tagline">Уже зарегистрированы? <Link className="auth__link" to="/sign-in">Войти</Link></p>
     </div>
-      );
+  );
 }
 
 export default Register;
